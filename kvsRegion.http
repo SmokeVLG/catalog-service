@@ -1,0 +1,33 @@
+###
+
+# curl -X 'POST'
+#  'http://localhost:8380/rdoc-store/api/sudis/region/search'
+#  -H 'accept: */*'
+#  -H 'Content-Type: application/json'
+#  -d '{
+#  "statuses": [
+#    "ACTIVE"
+#  ],
+#  "namePart": "олго",
+#  "page": 1,
+#  "pageSize": 10,
+#  "sortField": "CODE",
+#  "sortDescending": true
+#}'
+POST http://localhost:8380/rdoc-store/api/sudis/region/search
+accept: */*
+Content-Type: application/json
+
+{
+  "statuses": [
+    "ACTIVE"
+  ],
+  "namePart": "олго",
+  "page": 1,
+  "pageSize": 10,
+  "sortField": "CODE",
+  "sortDescending": true
+}
+
+###
+
