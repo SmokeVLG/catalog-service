@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestControllerAdvice
 public class BookControllerAdvice {
+
     @ExceptionHandler(BookNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     String bookNotFoundHandler(BookNotFoundException ex) {
@@ -26,17 +27,16 @@ public class BookControllerAdvice {
         return ex.getMessage();
     }
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public Map<String, String> handleValidationExceptions(
-            MethodArgumentNotValidException ex
-    ) {
-        var errors = new HashMap<String, String>();
-        ex.getBindingResult().getAllErrors().forEach(error -> {
-            String fieldName = ((FieldError) error).getField();
-            String errorMessage = error.getDefaultMessage();
-            errors.put(fieldName, errorMessage);
-        });
-        return errors;
-    }
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
+		var errors = new HashMap<String, String>();
+		ex.getBindingResult().getAllErrors().forEach(error -> {
+			String fieldName = ((FieldError) error).getField();
+			String errorMessage = error.getDefaultMessage();
+			errors.put(fieldName, errorMessage);
+		});
+		return errors;
+	}
+
 }

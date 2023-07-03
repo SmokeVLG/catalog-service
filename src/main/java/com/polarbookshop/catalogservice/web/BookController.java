@@ -10,6 +10,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("books")
 public class BookController {
+
     private final BookService bookService;
 
     public BookController(BookService bookService) {
@@ -42,4 +43,5 @@ public class BookController {
     public Book put(@PathVariable String isbn, @Valid @RequestBody Book book) {
         return bookService.editBookDetails(isbn, book);
     }
+
 }
